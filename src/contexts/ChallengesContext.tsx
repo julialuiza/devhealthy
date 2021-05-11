@@ -11,6 +11,7 @@ interface Challenge{
 }
 
 interface ChallengesContextData{
+  name: String;
   level: number;
   currentExperience: number; 
   challengesCompleted: number;
@@ -25,6 +26,7 @@ interface ChallengesContextData{
 
 interface ChallengesProviderProps{
   children: ReactNode;
+  name: string;
   level: number;
   currentExperience: number;
   challengesCompleted: number;
@@ -36,6 +38,7 @@ export function ChallengesProvider({children, ...rest}: ChallengesProviderProps)
   const [level, setLevel] = useState(rest.level ?? 1);
   const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ?? 0);
   const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ?? 0);
+  const [name, setName] = useState(rest.name ?? '');
   const [activeChallenge, setActiveChallenge] = useState(null);
   const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
 
@@ -46,10 +49,11 @@ export function ChallengesProvider({children, ...rest}: ChallengesProviderProps)
   },[])
 
   useEffect(() => {
+    Cookies.set('name', name.toString());
     Cookies.set('level', level.toString());
     Cookies.set('currentExperience', currentExperience.toString());
     Cookies.set('challengesCompleted', challengesCompleted.toString());
-  }, [level, currentExperience, challengesCompleted])
+  }, [name, level, currentExperience, challengesCompleted])
 
   function levelUp(){
     setLevel(level+1);
@@ -89,16 +93,15 @@ export function ChallengesProvider({children, ...rest}: ChallengesProviderProps)
        finalExperience = finalExperience - experienceToNextLevel;
        levelUp();
      }
-
      setChallengesCompleted(challengesCompleted+1);
      setCurrentExperience(finalExperience);
      setActiveChallenge(null);
-
   }
 
   return (
     <ChallengesContext.Provider 
     value = {{ 
+      name,
       level, 
       currentExperience, 
       challengesCompleted, 

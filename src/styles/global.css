@@ -13,6 +13,7 @@
   --title: #2e384d;
   --red: #d02d33;
   --green: #2ea2e8;
+  --green-neon: #4CD62B;
   --blue: #32b5ba;
   --blue-dark: #489bb3;
   --blue-twitter: #2aa9e0;
@@ -50,4 +51,8 @@ button {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+input:focus{
+  outline: none;
 }

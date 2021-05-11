@@ -1,0 +1,80 @@
+.container {
+  height: 100vh;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+}
+
+.container section {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6.25rem;
+  align-content: center;
+}
+
+.container section div p {
+  font-size: 2rem;
+  color: var(--blue-dark);
+  margin-bottom: 0.5rem
+}
+
+.container section div span {
+  font-size: 1rem;
+  color: var(--text);
+  opacity: 0.8;
+}
+
+.containerLogo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerLogin{
+  display: flex;
+  flex-direction: row;
+}
+
+.containerLogin button {
+  background-color: var(--blue-dark);
+  border: none;
+  margin-top: 1.5rem;
+  width: 3rem; 
+  height: 3rem;
+  border-radius: 0px 5px 5px 0;
+}
+
+.containerLogin input{
+  background-color: var(--blue);
+  border: none;
+  margin-top: 1.5rem;
+  padding-left: 1rem;
+  width: 15rem; 
+  height: 3rem;
+  border-radius: 5px 0 0 5px;
+  color: var(--white)
+}
+
+.containerLogin input::placeholder{
+  color: var(--white);
+  opacity: 0.6;
+}
+
+@media (max-width: 740px)
+{
+  .container section div:first-child{
+    display: none;
+  }
+  .container section{
+    grid-template-columns: 1fr;
+    align-content: center;
+    justify-items: center
+  }
+  .containerLogin{
+    display: flex;
+    flex-direction: row;
+  }
+}
