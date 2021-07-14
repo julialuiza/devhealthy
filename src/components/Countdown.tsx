@@ -31,8 +31,8 @@ export function Countdown(){
       </div>
 
       {hasFinished? (
-        <button type="button" className={`${styles.countdownButton}`} onClick={resetCountdown} disabled>
-         Ciclo encerrado :)
+        <button type="button" className={`${styles.countdownButton}`} disabled>
+         Tire um descanso e realize o desafio :)
        </button>
       ):(
         <>

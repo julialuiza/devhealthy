@@ -21,6 +21,7 @@ interface ChallengesContextData{
   startNewChallenge: () => void;
   resetChallenge: () => void;
   completeChallenge: () => void;
+  finishRestTime: () => void;
   closeLevelUpModal: () => void;
 }
 
@@ -78,6 +79,16 @@ export function ChallengesProvider({children, ...rest}: ChallengesProviderProps)
     }
   }
 
+  function finishRestTime(){
+    new Audio('./notification.mp3').play();
+
+    if(Notification.permission === 'granted'){
+      new Notification('Fim do descanso 🎉', {
+        body: '5 minutos já se passaram!'
+      });
+    }
+  }
+
   function resetChallenge(){
     setActiveChallenge(null);
   }
@@ -111,6 +122,7 @@ export function ChallengesProvider({children, ...rest}: ChallengesProviderProps)
       startNewChallenge,
       resetChallenge,
       completeChallenge,
+      finishRestTime,
       closeLevelUpModal
     }}
     >
